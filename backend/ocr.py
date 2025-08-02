@@ -5,10 +5,16 @@ from google.cloud import vision
 from google.cloud.vision_v1 import types
 import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\anssh\Desktop\pdfredactor-466620-61510ec4306a.json"
-vision_client = vision.ImageAnnotatorClient()
-# Set GCP credentials if not set via environment variable
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "path/to/your/service-account.json"
+# Load Google credentials from environment variable
+gcp_credentials_str = os.getenv("GOOGLE_CREDENTIALS")
+if not gcp_credentials_str:
+    raise RuntimeError("Missing GOOGLE_CREDENTIALS environment variable!")
+
+# Write credentials JSON to a temporary file
+with open("/tmp/creds.json", "w") as f:
+    f.write(gcp_credentials_str)
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/tmp/creds.json"
 
 # Initialize Vision client
 vision_client = vision.ImageAnnotatorClient()
