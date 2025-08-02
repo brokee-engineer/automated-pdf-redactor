@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+pillow
+PyMuPDF
+google-cloud-vision
+gliner
+transformers
+torch

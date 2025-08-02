@@ -3,16 +3,10 @@ import io
 from PIL import Image
 from google.cloud import vision
 from google.cloud.vision_v1 import types
+import os
 
-
-try:
-    creds_dict = json.loads(st.secrets["google"]["credentials"])
-    creds = service_account.Credentials.from_service_account_info(creds_dict)
-    vision_client = vision.ImageAnnotatorClient(credentials=creds)
-except:
-    import os
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\anssh\Desktop\pdfredactor-466620-61510ec4306a.json"
-    vision_client = vision.ImageAnnotatorClient()
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\anssh\Desktop\pdfredactor-466620-61510ec4306a.json"
+vision_client = vision.ImageAnnotatorClient()
 # Set GCP credentials if not set via environment variable
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "path/to/your/service-account.json"
 
