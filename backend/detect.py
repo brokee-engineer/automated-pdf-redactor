@@ -3,7 +3,7 @@ import torch
 from gliner import GLiNER
 
 # Load model once
-model = GLiNER.from_pretrained("urchade/gliner_base")
+model = GLiNER.from_pretrained("urchade/gliner_tiny")
 
 # Master list of supported labels
 ALL_LABELS = [
