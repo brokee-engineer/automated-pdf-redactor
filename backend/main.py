@@ -3,9 +3,9 @@ from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 import shutil, tempfile, os, json
 
-from backend.ocr import extract_text_with_boxes
-from backend.detect import detect_entities
-from backend.redact import redact_pdf
+from ocr import extract_text_with_boxes
+from detect import detect_entities
+from redact import redact_pdf
 
 app = FastAPI()
 
